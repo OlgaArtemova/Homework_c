@@ -53,7 +53,7 @@ Console.WriteLine(num%2 == 0);
 */
 
 //Задача 8: Напишите программу, которая на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.
-
+/*
 Console.Write("Введите целое число: ");
 int N = int.Parse(Console.ReadLine()!);
 int i = 2;
@@ -67,3 +67,23 @@ while (i <= N)
     else Console.Write(".");
     i = i + 2;
 }
+*/
+
+//Задача 10: Напишите программу, которая принимает на вход трёхзначное число и на выходе показывает вторую цифру этого числа.
+
+int InputNum(string message)
+{
+    Console.WriteLine(message);
+    int num = int.Parse(Console.ReadLine()!);
+    return num;
+}
+
+int FindSecondDigit(int number)
+{
+    int second = (number/10)%10;
+    return second;
+}
+int num = InputNum("Введите трехзначное число");
+int result = FindSecondDigit(num);
+Console.WriteLine($"Вторая цифра числа {num} - {result}");
+
