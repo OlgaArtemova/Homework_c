@@ -70,7 +70,7 @@ while (i <= N)
 */
 
 //Задача 10: Напишите программу, которая принимает на вход трёхзначное число и на выходе показывает вторую цифру этого числа.
-
+/*
 int InputNum(string message)
 {
     Console.WriteLine(message);
@@ -86,4 +86,27 @@ int FindSecondDigit(int number)
 int num = InputNum("Введите трехзначное число");
 int result = FindSecondDigit(num);
 Console.WriteLine($"Вторая цифра числа {num} - {result}");
+*/
 
+//Задача 13: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
+
+int InputNum(string message)
+{
+    Console.WriteLine(message);
+    int num = int.Parse(Console.ReadLine()!);
+    return num;
+}
+int num = InputNum("Введите целое число");
+// int FindThirdDigit(int number)
+// {
+     while (num%10>0)
+     {
+        int i = num%10;
+        num = num/10;
+        Console.Write(i + " ");
+     }
+//      return;
+    
+// }
+
+// FindThirdDigit(num);
