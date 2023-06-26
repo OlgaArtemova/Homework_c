@@ -89,24 +89,51 @@ Console.WriteLine($"Вторая цифра числа {num} - {result}");
 */
 
 //Задача 13: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
-
+/*
 int InputNum(string message)
 {
     Console.WriteLine(message);
     int num = int.Parse(Console.ReadLine()!);
     return num;
 }
-int num = InputNum("Введите целое число");
-// int FindThirdDigit(int number)
-// {
-     while (num%10>0)
+int num = InputNum ("Введите целое число");
+int FindThirdDigit(int number)
+{
+     while (number>999)
      {
-        int i = num%10;
-        num = num/10;
-        Console.Write(i + " ");
+        number = number/10;
+        
      }
-//      return;
-    
-// }
+     return number%10;
+}
 
-// FindThirdDigit(num);
+bool CheckNumber (int numb)
+{
+if (numb < 100)
+    {
+        Console.WriteLine("Третьей цифры нет");
+        return false;
+    }
+    return true;
+
+} 
+CheckNumber(num); 
+Console.WriteLine($"Третья цифра - {FindThirdDigit(num)}");
+*/
+//Задача 15: Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
+int InputNum(string message)
+{
+    Console.WriteLine(message);
+    int num = int.Parse(Console.ReadLine()!);
+    return num;
+}
+string Weekend (int number)
+{
+    string res = "Это не выходной день";
+    if (number == 6 || number == 7)
+    res = "Выходной день";
+    return res;
+}
+int num = InputNum("Введите число от 1 до 7");
+string result = Weekend (num);
+Console.WriteLine(result);
