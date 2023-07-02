@@ -172,7 +172,7 @@ CheckArray(array);
 */
 
 //Задача 21: Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
-
+/*
 int InputNum (string message)
 {
     Console.Write(message);
@@ -193,3 +193,30 @@ int z2 = InputNum("Введите координату z2: ");
 
 double res = Distance (x1, y1, z1, x2, y2, z2);
 System.Console.WriteLine(Math.Round(res, 2));
+*/
+
+//Задача 23: Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
+
+int InputNum(string message)
+{
+    Console.Write(message);
+    return int.Parse(Console.ReadLine()!);
+}
+
+Console.Write("Введите число: ");
+int n = int.Parse(Console.ReadLine()!);
+
+for (int i = 1; i <= n; i++)
+{
+    System.Console.Write($"{Math.Pow(i, 3)}");
+    {
+        if (i < n)
+        {
+            System.Console.Write(", ");
+        }
+    else
+    {
+            System.Console.Write(" ");
+        }
+    }
+}
