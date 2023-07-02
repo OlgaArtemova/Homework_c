@@ -197,12 +197,6 @@ System.Console.WriteLine(Math.Round(res, 2));
 
 //Задача 23: Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
 
-int InputNum(string message)
-{
-    Console.Write(message);
-    return int.Parse(Console.ReadLine()!);
-}
-
 Console.Write("Введите число: ");
 int n = int.Parse(Console.ReadLine()!);
 
