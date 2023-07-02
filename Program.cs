@@ -121,6 +121,7 @@ CheckNumber(num);
 Console.WriteLine($"Третья цифра - {FindThirdDigit(num)}");
 */
 //Задача 15: Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
+/*
 int InputNum(string message)
 {
     Console.WriteLine(message);
@@ -137,3 +138,35 @@ string Weekend (int number)
 int num = InputNum("Введите число от 1 до 7");
 string result = Weekend (num);
 Console.WriteLine(result);
+*/
+
+// Задача 19 : Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
+
+void CheckArray(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] == array[array.Length - 1 - i])
+            Console.Write("Число является палиндромом");
+        else
+            Console.Write("Число не является палиндромом");
+    }
+}
+Console.Write("Введите число: ");
+int num = int.Parse(Console.ReadLine()!);
+int temp = num;
+int count = 0;
+while (temp != 0)
+{
+    temp = temp / 10;
+    count++;
+}
+
+int[] array = new int[count];
+for (int i = 0; i < array.Length; i++)
+{
+    array[i] = num % 10;
+    num /= 10;
+}
+CheckArray(array);
+
