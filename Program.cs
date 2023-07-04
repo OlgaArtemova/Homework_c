@@ -196,7 +196,7 @@ System.Console.WriteLine(Math.Round(res, 2));
 */
 
 //Задача 23: Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
-
+/*
 Console.Write("Введите число: ");
 int n = int.Parse(Console.ReadLine()!);
 
@@ -214,3 +214,26 @@ for (int i = 1; i <= n; i++)
         }
     }
 }
+*/
+//Задача 25: Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
+
+int InputNum(string message)
+{
+    Console.WriteLine(message);
+    int number = int.Parse(Console.ReadLine()!);
+    return number;
+}
+int AToDegreeB(int num, int deg)
+{
+    int result = 1;
+    for (int i = 0; i <= deg; i++)
+    {
+        result = result * num;
+    }
+    return result;
+}
+int A = InputNum("Введите число A");
+int B = InputNum("Введите число B");
+int res = AToDegreeB(A, B);
+System.Console.WriteLine(res);
+
