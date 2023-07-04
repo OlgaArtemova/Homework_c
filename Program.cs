@@ -216,7 +216,7 @@ for (int i = 1; i <= n; i++)
 }
 */
 //Задача 25: Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
-
+/*
 int InputNum(string message)
 {
     Console.WriteLine(message);
@@ -236,4 +236,31 @@ int A = InputNum("Введите число A");
 int B = InputNum("Введите число B");
 int res = AToDegreeB(A, B);
 System.Console.WriteLine(res);
+*/
 
+//Задача 27: Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
+
+int InputNum(string message)
+{
+    Console.WriteLine(message);
+    int number = int.Parse(Console.ReadLine()!);
+    return number;
+}
+
+int SumOfDigits(int number)
+{
+    int sum = 0;
+    int digit = 0;
+
+    while ( number != 0)
+    {
+        digit = number % 10;
+        sum += digit;
+        number /= 10;
+    }
+    return sum;
+}
+
+int num = InputNum("Введите число");
+int sumOfDig = SumOfDigits(num);
+System.Console.WriteLine($"Сумма цифр числа {num} равна {sumOfDig}");
