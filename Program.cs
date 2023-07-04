@@ -239,7 +239,7 @@ System.Console.WriteLine(res);
 */
 
 //Задача 27: Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
-
+/*
 int InputNum(string message)
 {
     Console.WriteLine(message);
@@ -264,3 +264,35 @@ int SumOfDigits(int number)
 int num = InputNum("Введите число");
 int sumOfDig = SumOfDigits(num);
 System.Console.WriteLine($"Сумма цифр числа {num} равна {sumOfDig}");
+*/
+
+//Задача 29: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
+
+int InputNum (string message)
+{
+    System.Console.WriteLine(message);
+    return int.Parse(System.Console.ReadLine()!);
+}
+
+int [] ArrayRandom( int size, int startNum, int finishNum)
+{
+    int [] array = new int [size];
+    for (int i = 0; i < size; i++)
+    {
+        array [i] = new Random().Next(startNum, finishNum);
+    }
+    return array;
+}
+
+void PrintArray(int [] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+         System.Console.Write(array[i] + " ");
+    }
+}
+int quantity = InputNum("Сколько чисел будет в массиве?");
+int start = InputNum("Введите начальное значение диапазона: ");
+int finish = InputNum("Введите конечное значение диапазона: ");
+int [] res = ArrayRandom(quantity, start, finish);
+PrintArray(res);
