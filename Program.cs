@@ -265,7 +265,7 @@ int num = InputNum("Введите число");
 int sumOfDig = SumOfDigits(num);
 System.Console.WriteLine($"Сумма цифр числа {num} равна {sumOfDig}");
 */
-
+/*
 //Задача 29: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
 
 int InputNum (string message)
@@ -296,3 +296,57 @@ int start = InputNum("Введите начальное значение диа�
 int finish = InputNum("Введите конечное значение диапазона: ");
 int [] res = ArrayRandom(quantity, start, finish);
 PrintArray(res);
+*/
+
+//Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами.
+//Напишите программу, которая покажет количество чётных чисел в массиве.
+//[345, 897, 568, 234] -> 2
+
+int InputNum(string message)
+{
+    System.Console.WriteLine(message);
+    return int.Parse(Console.ReadLine()!);
+}
+
+int[] CreateArray(int size)
+{
+    return new int[size];
+}
+
+void FillArray(int[] array)
+{
+    Random rnd = new Random();
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = rnd.Next(100, 1000);
+    }
+}
+
+string PrintArray(int[] array)
+{
+    string res = String.Empty;
+    for (int i = 0; i < array.Length; i++)
+    {
+        res += array[i] + " ";
+    }
+    return res;
+}
+
+int FindQuantityNum(int[] array)
+{
+    int count = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] % 2 == 0)
+            count++;
+    }
+    return count;
+}
+int size = InputNum("Введите размер массива: ");
+
+int[] myArray = CreateArray(size);
+FillArray(myArray);
+string txt = PrintArray(myArray);
+Console.WriteLine(txt);
+int quantity = FindQuantityNum(myArray);
+Console.WriteLine($"Количество четных элементов равно: {quantity}");
