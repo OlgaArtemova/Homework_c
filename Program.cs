@@ -351,7 +351,7 @@ Console.WriteLine(txt);
 int quantity = FindQuantityNum(myArray);
 Console.WriteLine($"Количество четных элементов равно: {quantity}");
 */
-
+/*
 // Задача 36: Задайте одномерный массив, заполненный случайными числами. 
 // //Найдите сумму элементов, стоящих на нечётных позициях.
 // [3, 7, 23, 12] -> 19
@@ -407,3 +407,79 @@ string txt = PrintArray(myArray);
 System.Console.WriteLine(txt);
 int summa = SumNumOddPos(myArray);
 System.Console.WriteLine($"Сумма элементов, стоящих на нечетных позициях равна: {summa}");
+*/
+
+// Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
+// [3.22, 4.2, 1.15, 77.15, 65.2] => 77.15 - 1.15 = 76
+
+int InputNum(string message)
+{
+    System.Console.WriteLine(message);
+    return int.Parse(Console.ReadLine()!);
+}
+
+double[] CreateArray(int size)
+{
+    return new double[size];
+}
+
+void FillArray(double[] array, int min, int max)
+{
+    Random rnd = new Random();
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = Math.Round(rnd.NextDouble()+rnd.Next(min, max), 2);
+    }
+}
+
+string PrintArray(double[] array)
+{
+    string res = String.Empty;
+    for (int i = 0; i < array.Length; i++)
+    {
+        res += array[i] + " ";
+    }
+    return res;
+}
+
+double FindMin(double[] array)
+{
+    double min = array[0];
+    for (int i = 0; i < array.Length; i++)
+    {
+       if (array[i] < min)
+       min = array[i]; 
+    }
+    return min;
+}
+double FindMax(double[] array)
+{
+    double max = array[0];
+    for (int i = 0; i < array.Length; i++)
+    {
+       if (array[i] > max)
+       max = array[i]; 
+    }
+    return max;
+}
+
+double Differece(double[] array, double	maxOfAr, double	minOfAr)
+{
+    double diff = maxOfAr - minOfAr;
+    return diff;
+}
+int size = InputNum("Введите размер массива: ");
+int minValue = InputNum("Введите минимальное значение элемента: ");
+int maxValue = InputNum("Введите максимальное значение элемента: ");
+
+double[] myArray = CreateArray(size);
+FillArray(myArray, minValue, maxValue );
+string txt = PrintArray(myArray);
+System.Console.WriteLine(txt);
+
+double minimum = FindMin(myArray);
+double maximum = FindMax(myArray);
+System.Console.WriteLine(minimum);
+System.Console.WriteLine(maximum);
+double find = Differece(myArray, minimum, maximum);
+System.Console.WriteLine($"Разность между максимальным и минимальным значением массива равно:{find}");
