@@ -408,8 +408,8 @@ System.Console.WriteLine(txt);
 int summa = SumNumOddPos(myArray);
 System.Console.WriteLine($"Сумма элементов, стоящих на нечетных позициях равна: {summa}");
 */
-
-// Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
+/*
+// Задача 38. Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
 // [3.22, 4.2, 1.15, 77.15, 65.2] => 77.15 - 1.15 = 76
 
 int InputNum(string message)
@@ -483,3 +483,56 @@ System.Console.WriteLine(minimum);
 System.Console.WriteLine(maximum);
 double find = Differece(myArray, minimum, maximum);
 System.Console.WriteLine($"Разность между максимальным и минимальным значением массива равно:{find}");
+*/
+
+// Задача 41: Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
+// 0, 7, 8, -2, -2 -> 2
+// 1, -7, 567, 89, 223-> 3
+
+int InputNum(string message)
+{
+    System.Console.WriteLine(message);
+    return int.Parse(Console.ReadLine()!);
+}
+
+int[] CreateArray(int size)
+{
+    return new int[size];
+}
+
+void FillArray(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = InputNum($"Введите {i + 1} число: "); ;
+    }
+}
+
+string PrintArray(int[] array)
+{
+    string res = String.Empty;
+    for (int i = 0; i < array.Length; i++)
+    {
+        res += array[i] + " ";
+    }
+    return res;
+}
+
+int FindPosNums(int[] array)
+{
+    int result = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] > 0)
+            result++;
+    }
+    return result;
+}
+
+int size = InputNum("Введите количество чисел: ");
+int[] myArray = CreateArray(size);
+FillArray(myArray);
+string txt = PrintArray(myArray);
+System.Console.WriteLine(txt);
+int quantity = FindPosNums(myArray);
+System.Console.WriteLine($"Количество чисел больше 0 равно {quantity}");
