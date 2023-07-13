@@ -621,8 +621,7 @@ Print2DArray(myArray);
 // 17 -> такого числа в массиве нет
 
 //1 вариант
-
-
+/*
 int InputNum(string message)
 {
     Console.Write(message);
@@ -677,3 +676,65 @@ int[,] myArray = Create2DArray(rows, columns);
 Fill2DArray(myArray, minValue, maxValue);
 Print2DArray(myArray);
 FindNumCoord(myArray, findI, findJ);
+*/
+
+//2 вариант
+
+int InputNum(string message)
+{
+    Console.Write(message);
+    return int.Parse(Console.ReadLine()!);
+}
+
+int[,] Create2DArray(int rows, int cols)
+{
+    return new int[rows, cols];
+}
+void Fill2DArray(int[,] array, int min, int max)
+{
+    Random rnd = new Random();
+    for (int i = 0; i < array.GetLength(0); i++)
+        for (int j = 0; j < array.GetLength(1); j++)
+            array[i, j] = rnd.Next(min, max + 1);
+}
+
+void Print2DArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+            Console.Write($"{array[i, j]}\t");
+        Console.WriteLine();
+    }
+}
+
+void FindSerialNum(int[,] array, int find)
+{
+    int check = 0;
+    if (find > array.Length)
+    {
+        Console.WriteLine($"Такого элемента не существует");
+    }
+    else
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                check++;
+                if (check == find)
+                {
+                    Console.WriteLine($"Значение элемента с порядковым номером {find} равно {array[i, j]}");
+                }
+            }
+        }
+}
+int rows = InputNum("Введите количество строк: ");
+int columns = InputNum("Введите количество столбцов: ");
+int minValue = InputNum("Введите минимальное значение диапазона: ");
+int maxValue = InputNum("Введите максимальное значение диапазона: ");
+int serial = InputNum("Введите порядковый номер числа: ");
+
+int[,] myArray = Create2DArray(rows, columns);
+Fill2DArray(myArray, minValue, maxValue);
+Print2DArray(myArray);
+FindSerialNum(myArray, serial);
