@@ -810,7 +810,7 @@ ArithmeticMeanColumns(myArray);
 // 7 4 2 1
 // 9 5 3 2
 // 8 4 4 2
-
+/*
 int InputNum(string message)
 {
     Console.Write(message);
@@ -869,3 +869,84 @@ Print2DArray(myArray);
 Console.WriteLine();
 SelectionSort(myArray);
 Print2DArray(myArray);
+*/
+
+// Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// 5 2 6 7
+// Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
+
+int InputNum(string message)
+{
+    Console.Write(message);
+    return int.Parse(Console.ReadLine()!);
+}
+
+int[,] Create2DArray(int rows, int cols)
+{
+    return new int[rows, cols];
+}
+void Fill2DArray(int[,] array, int min, int max)
+{
+    Random rnd = new Random();
+    for (int i = 0; i < array.GetLength(0); i++)
+        for (int j = 0; j < array.GetLength(1); j++)
+            array[i, j] = rnd.Next(min, max + 1);
+}
+
+void Print2DArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+            Console.Write($"{array[i, j]}\t");
+        Console.WriteLine();
+    }
+}
+
+int[] FindSumOfRow(int[,] array)
+{
+    int[] summa = new int[array.GetLength(1)];
+    int s = 0;
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        int sum = 0;
+
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            sum += array[i, j];
+        }
+        summa[s] = sum;
+        //System.Console.Write(summa[s] + " ");
+    }
+    return summa;
+}
+
+int FindMinSum(int[] arraySum)
+{
+    int minIndex = 0;
+    for (int i = 0; i < arraySum.Length; i++)
+    {
+        int min = arraySum[0];
+        if (arraySum[i] < min) min = arraySum[i];
+        minIndex = i;
+    }
+    return minIndex;
+}
+
+int rows = InputNum("Введите количество строк: ");
+int columns = InputNum("Введите количество столбцов, не равное количеству строк: ");
+int minValue = InputNum("Введите минимальное значение диапазона: ");
+int maxValue = InputNum("Введите максимальное значение диапазона: ");
+
+int[,] myArray = Create2DArray(rows, columns);
+Fill2DArray(myArray, minValue, maxValue);
+Print2DArray(myArray);
+Console.WriteLine();
+int[] sumArray = FindSumOfRow(myArray);
+int result = FindMinSum(sumArray);
+Console.WriteLine($"Наименьшая сумма элементов в строке номер {result}");
