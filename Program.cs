@@ -879,7 +879,7 @@ Print2DArray(myArray);
 // 8 4 2 4
 // 5 2 6 7
 // Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
-
+/*
 int InputNum(string message)
 {
     Console.Write(message);
@@ -950,3 +950,82 @@ Console.WriteLine();
 int[] sumArray = FindSumOfRow(myArray);
 int result = FindMinSum(sumArray);
 Console.WriteLine($"Наименьшая сумма элементов в строке номер {result}");
+*/
+
+// Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
+// Например, даны 2 матрицы:
+// 2 4 | 3 4
+// 3 2 | 3 3
+// Результирующая матрица будет:
+// 18 20
+// 15 18
+
+int InputNum(string message)
+{
+    Console.Write(message);
+    return int.Parse(Console.ReadLine()!);
+}
+
+int[,] Create2DArray(int rows, int cols)
+{
+    return new int[rows, cols];
+}
+void Fill2DArray(int[,] array, int min, int max)
+{
+    Random rnd = new Random();
+    for (int i = 0; i < array.GetLength(0); i++)
+        for (int j = 0; j < array.GetLength(1); j++)
+            array[i, j] = rnd.Next(min, max + 1);
+}
+
+void Print2DArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+            Console.Write($"{array[i, j]}\t");
+        Console.WriteLine();
+    }
+}
+
+void MultiplicationOfMatrix(int[,] firstMatrix, int[,] secondMatrix)
+{
+    int[,] newMatrix = new int[firstMatrix.GetLength(0), secondMatrix.GetLength(1)];
+    if (firstMatrix.GetLength(1) != secondMatrix.GetLength(0))
+    {
+        Console.Write($"Операция невозможна");
+    }
+    else
+    {
+        for (int i = 0; i < firstMatrix.GetLength(0); i++)
+        {
+            for (int j = 0; j < secondMatrix.GetLength(1); j++)
+            {
+                for (int k = 0; k < secondMatrix.GetLength(0); k++)
+                {
+                    newMatrix[i, j] += firstMatrix[i, k] * secondMatrix[k, j];
+                }
+            }
+        }
+        Print2DArray(newMatrix);
+    }
+}
+
+int rowsFirst = InputNum("Введите количество строк первой матрицы: ");
+int columnsFirst = InputNum("Введите количество столбцов первой матрицы: ");
+int rowsSecond = InputNum("Введите количество строк второй матрицы: ");
+int columnsSecond = InputNum("Введите количество столбцов второй матрицы: ");
+int minValue = InputNum("Введите минимальное значение диапазона: ");
+int maxValue = InputNum("Введите максимальное значение диапазона: ");
+
+int[,] myArrayFirst = Create2DArray(rowsFirst, columnsFirst);
+Fill2DArray(myArrayFirst, minValue, maxValue);
+Print2DArray(myArrayFirst);
+
+Console.WriteLine();
+
+int[,] myArraySecond = Create2DArray(rowsSecond, columnsSecond);
+Fill2DArray(myArraySecond, minValue, maxValue);
+Print2DArray(myArraySecond);
+Console.WriteLine();
+MultiplicationOfMatrix(myArrayFirst, myArraySecond);
