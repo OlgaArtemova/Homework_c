@@ -1173,7 +1173,7 @@ System.Console.Write(PrintNum(num));
 // Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
 // M = 1; N = 15 -> 120
 // M = 4; N = 8. -> 30
-
+/*
 int InputNum(string message)
 {
     Console.Write(message);
@@ -1188,3 +1188,27 @@ int SumNumbers(int start, int end)
 int M = InputNum("Введите целое число M: ");
 int N = InputNum("Введите целое число N: ");
 System.Console.Write(SumNumbers(M, N));
+*/
+
+// Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии.
+// Даны два неотрицательных числа m и n.
+// m = 2, n = 3 -> A(m,n) = 9
+// m = 3, n = 2 -> A(m,n) = 29
+
+int InputNum(string message)
+{
+    Console.Write(message);
+    return int.Parse(Console.ReadLine()!);
+}
+int Ackerman(int M, int N)
+{
+    if (M == 0) return N + 1;
+    else
+    if (M > 0 && N == 0) return Ackerman(M - 1, 1);
+    else
+    if (M > 0 && N > 0) return Ackerman(M - 1, Ackerman(M, N - 1));
+    return Ackerman(M, N);
+}
+int m = InputNum("Введите целое число m: ");
+int n = InputNum("Введите целое число n: ");
+System.Console.Write(Ackerman(m, n));
