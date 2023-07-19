@@ -1109,7 +1109,7 @@ Fill3DArray(my3DArray, myArray);
 // 12 13 14 05
 // 11 16 15 06
 // 10 09 08 07
-
+/*
 int[,] matrix = new int[4, 4];
 
 void FillArrey(int[,] array)
@@ -1148,3 +1148,23 @@ void PrintArray(int[,] array)
 
 FillArrey(matrix);
 PrintArray(matrix);
+*/
+
+// Задача 64: Задайте значение N. Напишите программу, которая выведет все натуральные числа в промежутке от N до 1. Выполнить с помощью рекурсии.
+// N = 5 -> "5, 4, 3, 2, 1"
+// N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
+
+int InputNum(string message)
+{
+    Console.Write(message);
+    return int.Parse(Console.ReadLine()!);
+}
+
+string PrintNum(int n)
+{
+    if (n == 1) return n.ToString();
+    return (n + " " + PrintNum(--n));
+}
+
+int num = InputNum("Введите целое число: ");
+System.Console.Write(PrintNum(num));
